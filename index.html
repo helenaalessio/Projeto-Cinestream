@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>NicheFlix</title> 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body> 
+
+    <header class="main-banner" id="mainBanner" style="background-image: linear-gradient(to top, #cb78c5, transparent), url('https://filipamoreno.com/wp-content/uploads/2015/06/screen-shot-2015-06-15-at-23-10-38.png');"> 
+        <div class="banner-content"> 
+            <h1 id="movieTitle">Buffalo '66</h1> 
+            <p id="movieDescription">Buffalo '66 (1998) acompanha Billy Brown, um homem instável que acaba de sair da prisão. Para impressionar os pais, ele sequestra uma jovem estudante de dança chamada Layla e a força a fingir que é sua esposa, desencadeando uma viagem de reencontro familiar bizarra e emocionante.</p> 
+            <div class="banner-buttons"> 
+                <button class="btn-play">▶ Assistir</button> 
+                <button class="btn-info">ℹ Mais Informações</button> 
+            </div> 
+        </div> 
+    </header> 
+
+    <main class="movie-section" > 
+        <h2>Minha Lista</h2> 
+        <div class="movie-row"> 
+             
+            <div class="movie-card active" onclick="changeMovie('Buffalo 66', 'Buffalo 66 (1998) acompanha Billy Brown, um homem instável que acaba de sair da prisão. Para impressionar os pais, ele sequestra uma jovem estudante de dança chamada Layla e a força a fingir que é sua esposa, desencadeando uma viagem de reencontro familiar bizarra e emocionante.', 'https://filipamoreno.com/wp-content/uploads/2015/06/screen-shot-2015-06-15-at-23-10-38.png', this)"> 
+                <img src="https://m.media-amazon.com/images/M/MV5BMjQzYzEwZWItMGE2Ny00YTg2LTgyMjUtMjNjZDUzMGE2ZGE5XkEyXkFqcGc@._V1_.jpg" alt="Filme 1"> 
+            </div> 
+            
+            <div class="movie-card" onclick="changeMovie('Zero day', 'Zero Day (2003) adota o formato found footage para mostrar o diário de vídeo de dois adolescentes que planejam meticulosamente um massacre contra a própria escola, culminando no chocante dia do ataque.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhGzHgOeElbIU1eACL7w3mLXEZDpid6QVllPFJdKOztjzmkjgAm-7QEuTL&s=10', this)"> 
+                <img src="https://m.media-amazon.com/images/M/MV5BMTI5MzIzNjQ4MF5BMl5BanBnXkFtZTcwOTA0ODA3Mg@@._V1_.jpg" alt="Filme 2"> 
+            </div> 
+            
+            <div class="movie-card" onclick="changeMovie('Elephant', 'Elephant (2003) retrata um dia comum em uma escola de ensino médio, acompanhando a rotina e os dramas banais de vários estudantes. A aparente normalidade do cotidiano escolar é tragicamente quebrada quando dois alunos entram armados no colégio e realizam um massacre em massa planejado em segredo.', 'https://www.themoviebuff.net/wp-content/uploads/2026/06/Elephant-888830071-large-1024x649.jpg', this)"> 
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxq1w4NcGUbj6zMPH6ppxm0y8L3yPm6sSa5Q2zUq1JXA&s" alt="Filme 3"> 
+            </div> 
+             
+            <div class="movie-card" onclick="changeMovie('Gummo', 'Gummo (1997) retrata o cotidiano bizarro e alienado de adolescentes em uma cidade de Ohio devastada por um tornado. Sem uma história linear, eles passam o tempo caçando gatos, cheirando cola e cometendo vandalismos para fugir do tédio e da miséria social.', 'https://thecinematheque.ca/assets/images/films/_medium169/Gummo-2.jpg', this)"> 
+                <img src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/1f9caf0c-9889-426c-8b9d-9e500a008721.jpg" alt="Filme 4"> 
+            </div> 
+
+            <div class="movie-card" onclick="changeMovie('The childhood of Ivan', 'The childhood of Ivan (1962)  narra a história de um órfão de 12 anos que atua como espião soviético na Segunda Guerra Mundial. Movido pela vingança após perder a família para os nazistas, o menino realiza missões perigosas, enquanto o filme contrasta o horror do combate com seus sonhos de infância perdidos.', 'https://film-grab.com/wp-content/uploads/photo-gallery/imported_from_media_libray/thumb/2524%20(1).jpg?bwg=1547131962', this)"> 
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqEESnscZJMGuhzord2q2mBZpEq6gdonu7bSuioqxmUg&s=10" alt="Filme 4"> 
+            </div>
+            
+            <div class="movie-card" onclick="changeMovie('I believe in unicorns', 'I believe in unicorns (2014) segue Davina, uma adolescente solitária que foge de sua realidade difícil através da imaginação. Ela se apaixona por um jovem rebelde e viaja com ele, mas o romance dos sonhos rapidamente se transforma em um relacionamento abusivo e instável..', 'https://variety.com/wp-content/uploads/2014/03/unicorns.jpg', this)"> 
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV0z0TE65-SzXUgmnncB97kHr7dTpWIxVOj0AQwW0huw&s=10" alt="Filme 4"> 
+            </div> 
+
+        </div>
+    </main>
+
+    <script>
+        function changeMovie(title, description, imageUrl, cardElement) {
+            const banner = document.getElementById('mainBanner');
+            banner.style.backgroundImage = `linear-gradient(to top, #cb78c5, transparent), url('${imageUrl}')`;
+            
+            document.getElementById('movieTitle').innerText = title;
+            document.getElementById('movieDescription').innerText = description;
+            
+            const allCards = document.querySelectorAll('.movie-card');
+            allCards.forEach(card => card.classList.remove('active'));
+            
+            cardElement.classList.add('active');
+        }
+    </script>
+</body>
+</html>
