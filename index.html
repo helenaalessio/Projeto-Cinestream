@@ -8,13 +8,13 @@
 </head>
 <body> 
 
-    <header class="main-banner" id="mainBanner" style="background-image: linear-gradient(to top, #cb78c5, transparent), url('https://filipamoreno.com/wp-content/uploads/2015/06/screen-shot-2015-06-15-at-23-10-38.png');"> 
+    <header class="main-banner" id="mainBanner" style="background-image: linear-gradient(to top, #cb78c5, transparent), url('./screen-shot-banner.jpg');">
         <div class="banner-content"> 
-            <h1 id="movieTitle">Buffalo '66</h1> 
-            <p id="movieDescription">Buffalo '66 (1998) acompanha Billy Brown, um homem instável que acaba de sair da prisão. Para impressionar os pais, ele sequestra uma jovem estudante de dança chamada Layla e a força a fingir que é sua esposa, desencadeando uma viagem de reencontro familiar bizarra e emocionante.</p> 
+            <h1 id="movieTitle">Buffalo '66</h1>
+            <p id="movieDescription">Buffalo '66 (1998) acompanha Billy Brown, um homem instável que acaba de sair da prisão. Para impressionar os pais, ele sequestra uma jovem estudante de dança chamada Layla e a força a fingir que é sua esposa, desencadeando uma viagem de reencontro familiar bizarra e emocionante.</p>
             <div class="banner-buttons"> 
-                <button class="btn-play">▶ Assistir</button> 
-                <button class="btn-info">ℹ Mais Informações</button> 
+                <button class="btn-play" type="button">▶ Assistir</button>
+                <button class="btn-info" id="showMovieInfo" type="button">ℹ Mais Informações</button>
             </div> 
         </div> 
     </header> 
@@ -23,46 +23,158 @@
         <h2>Minha Lista</h2> 
         <div class="movie-row"> 
              
-            <div class="movie-card active" onclick="changeMovie('Buffalo 66', 'Buffalo 66 (1998) acompanha Billy Brown, um homem instável que acaba de sair da prisão. Para impressionar os pais, ele sequestra uma jovem estudante de dança chamada Layla e a força a fingir que é sua esposa, desencadeando uma viagem de reencontro familiar bizarra e emocionante.', 'https://filipamoreno.com/wp-content/uploads/2015/06/screen-shot-2015-06-15-at-23-10-38.png', this)"> 
-                <img src="https://m.media-amazon.com/images/M/MV5BMjQzYzEwZWItMGE2Ny00YTg2LTgyMjUtMjNjZDUzMGE2ZGE5XkEyXkFqcGc@._V1_.jpg" alt="Filme 1"> 
+            <div class="movie-card active" data-movie="buffalo66" role="button" tabindex="0" aria-label="Ver detalhes de Buffalo '66">
+                <img src="https://m.media-amazon.com/images/M/MV5BMjQzYzEwZWItMGE2Ny00YTg2LTgyMjUtMjNjZDUzMGE2ZGE5XkFqcGc@._V1_.jpg" alt="Pôster de Buffalo '66" loading="lazy" decoding="async">
             </div> 
             
-            <div class="movie-card" onclick="changeMovie('Zero day', 'Zero Day (2003) adota o formato found footage para mostrar o diário de vídeo de dois adolescentes que planejam meticulosamente um massacre contra a própria escola, culminando no chocante dia do ataque.', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhGzHgOeElbIU1eACL7w3mLXEZDpid6QVllPFJdKOztjzmkjgAm-7QEuTL&s=10', this)"> 
-                <img src="https://m.media-amazon.com/images/M/MV5BMTI5MzIzNjQ4MF5BMl5BanBnXkFtZTcwOTA0ODA3Mg@@._V1_.jpg" alt="Filme 2"> 
+            <div class="movie-card" data-movie="zeroDay" role="button" tabindex="0" aria-label="Ver detalhes de Zero Day">
+                <img src="https://m.media-amazon.com/images/M/MV5BMTI5MzIzNjQ4MF5BMl5BanBnXkFtZTcwOTA0ODA3Mg@@._V1_.jpg" alt="Pôster de Zero Day" loading="lazy" decoding="async">
             </div> 
             
-            <div class="movie-card" onclick="changeMovie('Elephant', 'Elephant (2003) retrata um dia comum em uma escola de ensino médio, acompanhando a rotina e os dramas banais de vários estudantes. A aparente normalidade do cotidiano escolar é tragicamente quebrada quando dois alunos entram armados no colégio e realizam um massacre em massa planejado em segredo.', 'https://www.themoviebuff.net/wp-content/uploads/2026/06/Elephant-888830071-large-1024x649.jpg', this)"> 
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxq1w4NcGUbj6zMPH6ppxm0y8L3yPm6sSa5Q2zUq1JXA&s" alt="Filme 3"> 
+            <div class="movie-card" data-movie="theCrush" role="button" tabindex="0" aria-label="Ver detalhes de The Crush">
+                <img src="https://upload.wikimedia.org/wikipedia/en/f/f5/Crushposter93.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original" alt="Pôster de The Crush" loading="lazy" decoding="async">
             </div> 
              
-            <div class="movie-card" onclick="changeMovie('Gummo', 'Gummo (1997) retrata o cotidiano bizarro e alienado de adolescentes em uma cidade de Ohio devastada por um tornado. Sem uma história linear, eles passam o tempo caçando gatos, cheirando cola e cometendo vandalismos para fugir do tédio e da miséria social.', 'https://thecinematheque.ca/assets/images/films/_medium169/Gummo-2.jpg', this)"> 
-                <img src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/1f9caf0c-9889-426c-8b9d-9e500a008721.jpg" alt="Filme 4"> 
+            <div class="movie-card" data-movie="gummo" role="button" tabindex="0" aria-label="Ver detalhes de Gummo">
+                <img src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/1f9caf0c-9889-426c-8b9d-9e500a008721.jpg" alt="Pôster de Gummo" loading="lazy" decoding="async">
             </div> 
 
-            <div class="movie-card" onclick="changeMovie('Welcome to the dollhouse', '"Bem-vindo à Casa de Bonecas" (1995) acompanha Dawn Wiener, uma garota de 12 anos desajeitada e impopular que enfrenta o lado mais cruel da adolescência.', 'https://film-grab.com/wp-content/uploads/photo-gallery/imported_from_media_libray/thumb/2524%20(1).jpg?bwg=1547131962', this)"> 
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqEESnscZJMGuhzord2q2mBZpEq6gdonu7bSuioqxmUg&s=10" alt="Filme 4"> 
+            <div class="movie-card" data-movie="dollhouse" role="button" tabindex="0" aria-label="Ver detalhes de Welcome to the Dollhouse">
+                <img src="https://m.media-amazon.com/images/I/51DXuQBXb5L._AC_UF894,1000_QL80_.jpg" alt="Pôster de Welcome to the Dollhouse" loading="lazy" decoding="async">
             </div>
             
-            <div class="movie-card" onclick="changeMovie('I believe in unicorns', 'I believe in unicorns (2014) segue Davina, uma adolescente solitária que foge de sua realidade difícil através da imaginação. Ela se apaixona por um jovem rebelde e viaja com ele, mas o romance dos sonhos rapidamente se transforma em um relacionamento abusivo e instável..', 'https://variety.com/wp-content/uploads/2014/03/unicorns.jpg', this)"> 
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV0z0TE65-SzXUgmnncB97kHr7dTpWIxVOj0AQwW0huw&s=10" alt="Filme 4"> 
+            <div class="movie-card" data-movie="unicorns" role="button" tabindex="0" aria-label="Ver detalhes de I Believe in Unicorns">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV0z0TE65-SzXUgmnncB97kHr7dTpWIxVOj0AQwW0huw&s=10" alt="Pôster de I Believe in Unicorns" loading="lazy" decoding="async">
             </div> 
 
         </div>
     </main>
 
+    <dialog class="movie-dialog" id="movieDialog" aria-labelledby="dialogTitle">
+        <div class="dialog-content">
+            <button class="dialog-close" id="closeMovieInfo" type="button" aria-label="Fechar detalhes">×</button>
+            <p class="dialog-eyebrow">DETALHES DO FILME</p>
+            <h2 id="dialogTitle"></h2>
+            <p class="dialog-meta"><span id="dialogYear"></span><span id="dialogDuration"></span></p>
+            <dl class="dialog-details">
+                <div><dt>Gêneros</dt><dd id="dialogGenres"></dd></div>
+                <div><dt>Direção</dt><dd id="dialogDirector"></dd></div>
+                <div><dt>Elenco</dt><dd id="dialogCast"></dd></div>
+            </dl>
+            <p class="dialog-synopsis" id="dialogSynopsis"></p>
+        </div>
+    </dialog>
+
     <script>
-        function changeMovie(title, description, imageUrl, cardElement) {
-            const banner = document.getElementById('mainBanner');
-            banner.style.backgroundImage = `linear-gradient(to top, #cb78c5, transparent), url('${imageUrl}')`;
-            
-            document.getElementById('movieTitle').innerText = title;
-            document.getElementById('movieDescription').innerText = description;
-            
-            const allCards = document.querySelectorAll('.movie-card');
-            allCards.forEach(card => card.classList.remove('active'));
-            
-            cardElement.classList.add('active');
+        const movies = {
+            buffalo66: {
+                title: "Buffalo '66",
+                year: "1998",
+                duration: "1h 50min",
+                genres: "Comédia dramática, romance",
+                director: "Vincent Gallo",
+                cast: "Vincent Gallo, Christina Ricci, Ben Gazzara",
+                image: "./screen-shot-banner.jpg",
+                synopsis: "Recém-saído da prisão, Billy Brown sequestra Layla, uma jovem dançarina, e pede que ela finja ser sua esposa durante uma visita aos pais. O encontro revela as feridas familiares e a solidão que moldam a vida de Billy."
+            },
+            zeroDay: {
+                title: "Zero Day",
+                year: "2002",
+                duration: "1h 32min",
+                genres: "Drama, found footage",
+                director: "Ben Coccio",
+                cast: "Andre Keuck, Cal Robertson",
+                image: "./389818_59ebbe.png",
+                synopsis: "Contado por meio de gravações feitas por dois amigos adolescentes, o drama acompanha seu isolamento e as consequências de um plano de violência escolar. A narrativa explora alienação, amizade e os sinais ignorados ao redor deles."
+            },
+            theCrush: {
+                title: "The Crush",
+                year: "1993",
+                duration: "1h 29min",
+                genres: "Suspense psicológico",
+                director: "Alan Shapiro",
+                cast: "Alicia Silverstone, Cary Elwes, Jennifer Rubin",
+                image: "./the-crush.png",
+                synopsis: "Nick Eliot, um jornalista que aluga uma casa de hóspedes, torna-se alvo da paixão obsessiva de Adrian, filha adolescente dos proprietários. Quando ele rejeita suas investidas, a jovem começa a interferir em sua vida."
+            },
+            gummo: {
+                title: "Gummo",
+                year: "1997",
+                duration: "1h 29min",
+                genres: "Drama experimental",
+                director: "Harmony Korine",
+                cast: "Jacob Reynolds, Chloë Sevigny, Linda Manz",
+                image: "./Gummo-2.png",
+                synopsis: "Em uma cidade de Ohio marcada por um tornado, o filme acompanha fragmentos do cotidiano de jovens moradores. Em vez de uma trama tradicional, usa episódios e imagens experimentais para retratar uma comunidade à margem."
+            },
+            dollhouse: {
+                title: "Welcome to the Dollhouse",
+                year: "1995",
+                duration: "1h 27min",
+                genres: "Comédia dramática, amadurecimento",
+                director: "Todd Solondz",
+                cast: "Heather Matarazzo, Brendan Sexton III, Eric Mabius",
+                image: "./superresolution-d4aea9ce-756e-428a-9235-f87d9c198f32.png",
+                synopsis: "Dawn Wiener, uma estudante de 12 anos pouco popular, tenta encontrar seu lugar na escola e na família, enfrentando colegas cruéis e a indiferença dos adultos ao seu redor."
+            },
+            unicorns: {
+                title: "I Believe in Unicorns",
+                year: "2014",
+                duration: "1h 20min",
+                genres: "Drama romântico, amadurecimento",
+                director: "Leah Meyerhoff",
+                cast: "Natalia Dyer, Peter Vack, Julia Garner",
+                image: "./superresolution-68c2a26a-b2ac-436f-a569-bb9567e8c623.png",
+                synopsis: "Davina, uma adolescente que cuida da mãe e encontra refúgio na imaginação, apaixona-se por um jovem rebelde. A viagem dos dois põe à prova a visão idealizada que ela tem do relacionamento."
+            }
+        };
+
+        const movieDialog = document.getElementById('movieDialog');
+        let activeMovie = movies.buffalo66;
+
+        function showMovieInfo(movie) {
+            document.getElementById('dialogTitle').textContent = movie.title;
+            document.getElementById('dialogYear').textContent = movie.year;
+            document.getElementById('dialogDuration').textContent = movie.duration;
+            document.getElementById('dialogGenres').textContent = movie.genres;
+            document.getElementById('dialogDirector').textContent = movie.director;
+            document.getElementById('dialogCast').textContent = movie.cast;
+            document.getElementById('dialogSynopsis').textContent = movie.synopsis;
+            movieDialog.showModal();
         }
+
+        function changeMovie(movieId, cardElement) {
+            const movie = movies[movieId];
+            activeMovie = movie;
+
+            document.getElementById('mainBanner').style.backgroundImage =
+                `linear-gradient(to top, #cb78c5, transparent), url('${movie.image}')`;
+            document.getElementById('movieTitle').textContent = movie.title;
+            document.getElementById('movieDescription').textContent = movie.synopsis;
+
+            document.querySelectorAll('.movie-card').forEach(card => card.classList.remove('active'));
+            cardElement.classList.add('active');
+            showMovieInfo(movie);
+        }
+
+        document.querySelectorAll('.movie-card').forEach(card => {
+            const selectMovie = () => changeMovie(card.dataset.movie, card);
+            card.addEventListener('click', selectMovie);
+            card.addEventListener('keydown', event => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    selectMovie();
+                }
+            });
+        });
+
+        document.getElementById('showMovieInfo').addEventListener('click', () => showMovieInfo(activeMovie));
+        document.getElementById('closeMovieInfo').addEventListener('click', () => movieDialog.close());
+        movieDialog.addEventListener('click', event => {
+            if (event.target === movieDialog) {
+                movieDialog.close();
+            }
+        });
     </script>
 </body>
 </html>
