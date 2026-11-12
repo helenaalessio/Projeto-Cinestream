@@ -8,47 +8,70 @@
 </head>
 <body> 
 
-    <header class="main-banner" id="mainBanner" style="background-image: linear-gradient(to top, #cb78c5, transparent), url('./screen-shot-banner.jpg');">
+    <header class="main-banner" id="mainBanner">
+        <div class="banner-background active" style="background-image: url('./banners/IMG_1738.JPG');" aria-hidden="true"></div>
+        <div class="banner-background" aria-hidden="true"></div>
+        <div class="banner-search" id="bannerSearch">
+            <label class="visually-hidden" for="movieSearch">Buscar por título, gênero, elenco ou direção</label>
+            <input class="movie-search" id="movieSearch" type="search" placeholder="Buscar filmes..." autocomplete="off" hidden>
+            <button class="search-toggle" id="toggleSearch" type="button" aria-label="Buscar filmes" aria-expanded="false" aria-controls="movieSearch">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <path d="m20 20-4-4"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="trailer-panel" id="trailerPanel" aria-hidden="true" inert>
+            <iframe class="trailer-embed" id="trailerFrame" title="Trailer do filme selecionado" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen hidden></iframe>
+            <video class="trailer-video" id="trailerVideo" controls playsinline hidden></video>
+            <button class="trailer-close" id="closeTrailer" type="button" aria-label="Voltar ao banner" title="Voltar ao banner">×</button>
+        </div>
         <div class="banner-content"> 
             <h1 id="movieTitle">Buffalo '66</h1>
             <p id="movieDescription">Buffalo '66 (1998) acompanha Billy Brown, um homem instável que acaba de sair da prisão. Para impressionar os pais, ele sequestra uma jovem estudante de dança chamada Layla e a força a fingir que é sua esposa, desencadeando uma viagem de reencontro familiar bizarra e emocionante.</p>
             <div class="banner-buttons"> 
-                <button class="btn-play" type="button">▶ Assistir</button>
+                <button class="btn-play" id="playMovie" type="button">▶ Assistir</button>
                 <button class="btn-info" id="showMovieInfo" type="button">ℹ Mais Informações</button>
             </div> 
+            <p class="trailer-notice" id="trailerNotice" role="status" hidden></p>
         </div> 
     </header> 
 
-    <main class="movie-section" > 
-        <h2>Minha Lista</h2> 
-        <div class="movie-row"> 
+    <main class="movie-section"> 
+        <div class="movie-section-heading">
+            <h2>Minha Lista</h2>
+        </div>
+        <p class="empty-results" id="emptyResults" hidden>Nenhum filme encontrado.</p>
+        <div class="movie-row" id="movieRow"> 
              
             <div class="movie-card active" data-movie="buffalo66" role="button" tabindex="0" aria-label="Ver detalhes de Buffalo '66">
-                <img src="https://m.media-amazon.com/images/M/MV5BMjQzYzEwZWItMGE2Ny00YTg2LTgyMjUtMjNjZDUzMGE2ZGE5XkFqcGc@._V1_.jpg" alt="Pôster de Buffalo '66" loading="lazy" decoding="async">
+                <img src="https://m.media-amazon.com/images/M/MV5BMjQzYzEwZWItMGE2Ny00YTg2LTgyMjUtMjNjZDUzMGE2ZGE5XkEyXkFqcGc@._V1_.jpg" alt="Pôster de Buffalo '66" loading="eager" decoding="sync">
             </div> 
             
             <div class="movie-card" data-movie="zeroDay" role="button" tabindex="0" aria-label="Ver detalhes de Zero Day">
-                <img src="https://m.media-amazon.com/images/M/MV5BMTI5MzIzNjQ4MF5BMl5BanBnXkFtZTcwOTA0ODA3Mg@@._V1_.jpg" alt="Pôster de Zero Day" loading="lazy" decoding="async">
+                <img src="https://m.media-amazon.com/images/M/MV5BMTI5MzIzNjQ4MF5BMl5BanBnXkFtZTcwOTA0ODA3Mg@@._V1_.jpg" alt="Pôster de Zero Day" loading="eager" decoding="sync">
             </div> 
             
             <div class="movie-card" data-movie="theCrush" role="button" tabindex="0" aria-label="Ver detalhes de The Crush">
-                <img src="https://upload.wikimedia.org/wikipedia/en/f/f5/Crushposter93.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original" alt="Pôster de The Crush" loading="lazy" decoding="async">
+                <img src="https://upload.wikimedia.org/wikipedia/en/f/f5/Crushposter93.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original" alt="Pôster de The Crush" loading="eager" decoding="sync">
             </div> 
              
-            <div class="movie-card" data-movie="gummo" role="button" tabindex="0" aria-label="Ver detalhes de Gummo">
-                <img src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/1f9caf0c-9889-426c-8b9d-9e500a008721.jpg" alt="Pôster de Gummo" loading="lazy" decoding="async">
+            <div class="movie-card" data-movie="naturalBornKillers" role="button" tabindex="0" aria-label="Ver detalhes de Natural Born Killers">
+                <img src="https://m.media-amazon.com/images/M/MV5BYjFhNDg0MzctYzQwZC00MzRmLTg1ODQtOTc1NjFlY2QzZmU5XkEyXkFqcGc@._V1_.jpg" alt="Pôster de Natural Born Killers" loading="eager" decoding="sync">
             </div> 
 
             <div class="movie-card" data-movie="dollhouse" role="button" tabindex="0" aria-label="Ver detalhes de Welcome to the Dollhouse">
-                <img src="https://m.media-amazon.com/images/I/51DXuQBXb5L._AC_UF894,1000_QL80_.jpg" alt="Pôster de Welcome to the Dollhouse" loading="lazy" decoding="async">
+                <img src="https://m.media-amazon.com/images/I/51DXuQBXb5L._AC_UF894,1000_QL80_.jpg" alt="Pôster de Welcome to the Dollhouse" loading="eager" decoding="sync">
             </div>
             
-            <div class="movie-card" data-movie="unicorns" role="button" tabindex="0" aria-label="Ver detalhes de I Believe in Unicorns">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV0z0TE65-SzXUgmnncB97kHr7dTpWIxVOj0AQwW0huw&s=10" alt="Pôster de I Believe in Unicorns" loading="lazy" decoding="async">
+            <div class="movie-card" data-movie="murderHouse" role="button" tabindex="0" aria-label="Ver detalhes de American Horror Story: Murder House">
+                  <img src="https://images.mubicdn.net/images/film/149591/cache-126156-1745492639/image-w1280.jpg?size=800x" alt="Imagem de American Horror Story: Murder House" loading="eager" decoding="sync">
             </div> 
 
         </div>
     </main>
+
+    <button class="add-movie-button" id="openAddMovie" type="button" aria-label="Adicionar filme" title="Adicionar filme">+</button>
 
     <dialog class="movie-dialog" id="movieDialog" aria-labelledby="dialogTitle">
         <div class="dialog-content">
@@ -65,6 +88,41 @@
         </div>
     </dialog>
 
+    <dialog class="movie-dialog add-movie-dialog" id="addMovieDialog" aria-labelledby="addMovieTitle">
+        <form class="dialog-content add-movie-form" id="addMovieForm">
+            <button class="dialog-close" id="closeAddMovie" type="button" aria-label="Fechar formulário">×</button>
+            <p class="dialog-eyebrow">NOVO FILME</p>
+            <h2 id="addMovieTitle">Adicionar filme</h2>
+            <div class="form-fields">
+                <label>Nome
+                    <input name="title" type="text" maxlength="120" required>
+                </label>
+                <label>Gênero
+                    <input name="genres" type="text" maxlength="120" required>
+                </label>
+                <label>Elenco
+                    <input name="cast" type="text" maxlength="240" required>
+                </label>
+                <label>Direção
+                    <input name="director" type="text" maxlength="120" required>
+                </label>
+                <label class="form-field-wide">Descrição
+                    <textarea name="synopsis" rows="4" maxlength="1200" required></textarea>
+                </label>
+                <label class="form-field-wide">URL do banner
+                    <input name="banner" type="url" placeholder="https://..." required>
+                </label>
+                <label class="form-field-wide">URL do pôster
+                    <input name="poster" type="url" placeholder="https://..." required>
+                </label>
+                <label class="form-field-wide">Arquivo ou link do trailer (opcional)
+                    <input name="trailer" type="text" placeholder="./trailers/filme.mp4 ou link do YouTube">
+                </label>
+            </div>
+            <button class="add-movie-submit" type="submit">Adicionar à lista</button>
+        </form>
+    </dialog>
+
     <script>
         const movies = {
             buffalo66: {
@@ -74,7 +132,8 @@
                 genres: "Comédia dramática, romance",
                 director: "Vincent Gallo",
                 cast: "Vincent Gallo, Christina Ricci, Ben Gazzara",
-                image: "./screen-shot-banner.jpg",
+                image: "./banners/IMG_1738.JPG",
+                trailer: "./trailers/YTDown.com_YouTube_Media_abUgHWAaBFU_Buffalo-66-1998-trailer_001_720p.mp4",
                 synopsis: "Recém-saído da prisão, Billy Brown sequestra Layla, uma jovem dançarina, e pede que ela finja ser sua esposa durante uma visita aos pais. O encontro revela as feridas familiares e a solidão que moldam a vida de Billy."
             },
             zeroDay: {
@@ -84,7 +143,8 @@
                 genres: "Drama, found footage",
                 director: "Ben Coccio",
                 cast: "Andre Keuck, Cal Robertson",
-                image: "./389818_59ebbe.png",
+                image: "./banners/IMG_1734.JPG",
+                trailer: "./trailers/copy_A6F360E5-91D1-4B48-9DF5-831214D4BA43.mov",
                 synopsis: "Contado por meio de gravações feitas por dois amigos adolescentes, o drama acompanha seu isolamento e as consequências de um plano de violência escolar. A narrativa explora alienação, amizade e os sinais ignorados ao redor deles."
             },
             theCrush: {
@@ -94,18 +154,21 @@
                 genres: "Suspense psicológico",
                 director: "Alan Shapiro",
                 cast: "Alicia Silverstone, Cary Elwes, Jennifer Rubin",
-                image: "./the-crush.png",
+                image: "./banners/IMG_1733.JPG",
+                trailer: "./trailers/copy_FCE66285-70C4-4EA5-8922-FB2DE9FDC50D.mov",
                 synopsis: "Nick Eliot, um jornalista que aluga uma casa de hóspedes, torna-se alvo da paixão obsessiva de Adrian, filha adolescente dos proprietários. Quando ele rejeita suas investidas, a jovem começa a interferir em sua vida."
             },
-            gummo: {
-                title: "Gummo",
-                year: "1997",
-                duration: "1h 29min",
-                genres: "Drama experimental",
-                director: "Harmony Korine",
-                cast: "Jacob Reynolds, Chloë Sevigny, Linda Manz",
-                image: "./Gummo-2.png",
-                synopsis: "Em uma cidade de Ohio marcada por um tornado, o filme acompanha fragmentos do cotidiano de jovens moradores. Em vez de uma trama tradicional, usa episódios e imagens experimentais para retratar uma comunidade à margem."
+            naturalBornKillers: {
+                title: "Natural Born Killers",
+                year: "1994",
+                duration: "1h 59min",
+                genres: "Crime, drama, suspense",
+                director: "Oliver Stone",
+                cast: "Woody Harrelson, Juliette Lewis, Robert Downey Jr.",
+                image: "./banners/IMG_1740.JPG",
+                poster: "https://m.media-amazon.com/images/M/MV5BYjFhNDg0MzctYzQwZC00MzRmLTg1ODQtOTc1NjFlY2QzZmU5XkEyXkFqcGc@._V1_.jpg",
+                trailer: "./trailers/copy_BFED3134-C464-44A2-A311-FB400855CED0.mov",
+                synopsis: "Mickey e Mallory Knox atravessam os Estados Unidos em uma sequência de crimes que vira espetáculo para a mídia. O filme satiriza a cobertura sensacionalista e a transformação da violência em entretenimento."
             },
             dollhouse: {
                 title: "Welcome to the Dollhouse",
@@ -114,23 +177,222 @@
                 genres: "Comédia dramática, amadurecimento",
                 director: "Todd Solondz",
                 cast: "Heather Matarazzo, Brendan Sexton III, Eric Mabius",
-                image: "./superresolution-d4aea9ce-756e-428a-9235-f87d9c198f32.png",
+                image: "./banners/superresolution-d4aea9ce-756e-428a-9235-f87d9c198f32.png",
+                trailer: "./trailers/copy_BF0E99C2-101E-4DDD-984B-0B5E83E495BC.mov",
                 synopsis: "Dawn Wiener, uma estudante de 12 anos pouco popular, tenta encontrar seu lugar na escola e na família, enfrentando colegas cruéis e a indiferença dos adultos ao seu redor."
             },
-            unicorns: {
-                title: "I Believe in Unicorns",
-                year: "2014",
-                duration: "1h 20min",
-                genres: "Drama romântico, amadurecimento",
-                director: "Leah Meyerhoff",
-                cast: "Natalia Dyer, Peter Vack, Julia Garner",
-                image: "./superresolution-68c2a26a-b2ac-436f-a569-bb9567e8c623.png",
-                synopsis: "Davina, uma adolescente que cuida da mãe e encontra refúgio na imaginação, apaixona-se por um jovem rebelde. A viagem dos dois põe à prova a visão idealizada que ela tem do relacionamento."
+            murderHouse: {
+                title: "American Horror Story: Murder House",
+                year: "2011",
+                duration: "1ª temporada (12 episódios)",
+                genres: "Terror, drama, sobrenatural",
+                director: "Vários diretores",
+                cast: "Connie Britton, Dylan McDermott, Taissa Farmiga, Evan Peters, Jessica Lange",
+                image: "./banners/IMG_1735.JPG",
+                poster: "./american-horror-story-season-1-poster-2.jpg",
+                trailer: "./trailers/YTDown.com_YouTube_Media_S25LcCGDlv4_American-Horror-Story-Murder-House-Season-1-Official-Trailer-FX_001_720p.mp4",
+                synopsis: "A família Harmon se muda para uma antiga mansão em Los Angeles, sem saber que seus moradores e visitantes estão ligados a uma história sobrenatural que atravessa diferentes épocas."
             }
         };
 
         const movieDialog = document.getElementById('movieDialog');
+        const addMovieDialog = document.getElementById('addMovieDialog');
+        const addMovieForm = document.getElementById('addMovieForm');
+        const movieRow = document.getElementById('movieRow');
+        const bannerSearch = document.getElementById('bannerSearch');
+        const movieSearch = document.getElementById('movieSearch');
+        const toggleSearch = document.getElementById('toggleSearch');
+        const emptyResults = document.getElementById('emptyResults');
+        const bannerBackgrounds = document.querySelectorAll('.banner-background');
+        const customMoviesStorageKey = 'cinestream-custom-movies';
+        const trailerNotice = document.getElementById('trailerNotice');
+        const mainBanner = document.getElementById('mainBanner');
+        const bannerContent = document.querySelector('.banner-content');
+        const trailerPanel = document.getElementById('trailerPanel');
+        const trailerFrame = document.getElementById('trailerFrame');
+        const trailerVideo = document.getElementById('trailerVideo');
+        const playButton = document.getElementById('playMovie');
         let activeMovie = movies.buffalo66;
+        let currentBannerIndex = 0;
+        let customMovieCounter = 0;
+
+        function getSavedCustomMovies() {
+            try {
+                const savedMovies = JSON.parse(localStorage.getItem(customMoviesStorageKey) || '[]');
+                const fields = ['title', 'genres', 'cast', 'director', 'synopsis', 'image', 'poster'];
+                return Array.isArray(savedMovies) ? savedMovies.filter(entry =>
+                    entry && typeof entry.id === 'string' && entry.movie &&
+                    fields.every(field => typeof entry.movie[field] === 'string')
+                ) : [];
+            } catch {
+                return [];
+            }
+        }
+
+        function createMovieCard(movieId, movie) {
+            const card = document.createElement('div');
+            card.className = 'movie-card';
+            card.dataset.movie = movieId;
+            card.setAttribute('role', 'button');
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('aria-label', `Selecionar ${movie.title}`);
+
+            const poster = document.createElement('img');
+            if (movie.poster) poster.src = movie.poster;
+            poster.alt = `Pôster de ${movie.title}`;
+            poster.loading = 'eager';
+            poster.decoding = 'sync';
+            card.append(poster);
+            return card;
+        }
+
+        function normalizeSearch(value) {
+            return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('pt-BR');
+        }
+
+        function closeSearch() {
+            bannerSearch.classList.remove('is-open');
+            movieSearch.hidden = true;
+            movieSearch.value = '';
+            movieSearch.blur();
+            toggleSearch.setAttribute('aria-expanded', 'false');
+            filterMovies();
+        }
+
+        function filterMovies() {
+            const query = normalizeSearch(movieSearch.value.trim());
+            let visibleCount = 0;
+
+            movieRow.querySelectorAll('.movie-card').forEach(card => {
+                const movie = movies[card.dataset.movie];
+                const searchableText = normalizeSearch(
+                    `${movie.title} ${movie.genres} ${movie.cast} ${movie.director}`
+                );
+                card.hidden = !searchableText.includes(query);
+                if (!card.hidden) visibleCount += 1;
+            });
+
+            emptyResults.hidden = visibleCount > 0;
+        }
+
+        function normalizeHttpUrl(value) {
+            if (typeof value !== 'string' || !value.trim()) return null;
+            try {
+                const url = new URL(value.trim());
+                return url.protocol === 'http:' || url.protocol === 'https:' ? url.href : null;
+            } catch {
+                return null;
+            }
+        }
+
+        function getTrailerSource(value) {
+            if (typeof value !== 'string' || !value.trim()) return null;
+
+            let url;
+            try {
+                url = new URL(value.trim(), document.baseURI);
+            } catch {
+                return null;
+            }
+
+            const isWebUrl = url.protocol === 'http:' || url.protocol === 'https:';
+            if (!isWebUrl && url.protocol !== 'file:') return null;
+            const hostname = url.hostname.toLowerCase();
+            const pathSegments = url.pathname.split('/').filter(Boolean);
+
+            if (isWebUrl && (hostname === 'youtu.be' || hostname === 'youtube.com' || hostname.endsWith('.youtube.com'))) {
+                let videoId = hostname === 'youtu.be' ? pathSegments[0] : url.searchParams.get('v');
+                if (!videoId && ['embed', 'shorts', 'live'].includes(pathSegments[0])) {
+                    videoId = pathSegments[1];
+                }
+                return videoId ? {
+                    kind: 'embed',
+                    url: `https://www.youtube.com/embed/${encodeURIComponent(videoId)}?autoplay=1&rel=0`
+                } : null;
+            }
+
+            if (isWebUrl && (hostname === 'vimeo.com' || hostname.endsWith('.vimeo.com'))) {
+                const videoIndex = pathSegments.indexOf('video');
+                const videoId = videoIndex >= 0 ? pathSegments[videoIndex + 1] : pathSegments[0];
+                return videoId && /^\d+$/.test(videoId) ? {
+                    kind: 'embed',
+                    url: `https://player.vimeo.com/video/${videoId}?autoplay=1`
+                } : null;
+            }
+
+            if (/\.(mp4|webm|ogg|mov)$/i.test(url.pathname)) {
+                return { kind: 'video', url: url.href };
+            }
+
+            return null;
+        }
+
+        function closeTrailer(restoreFocus = false) {
+            if (!mainBanner.classList.contains('is-trailer-playing')) return;
+
+            mainBanner.classList.remove('is-trailer-playing');
+            bannerContent.inert = false;
+            bannerSearch.inert = false;
+            trailerPanel.setAttribute('aria-hidden', 'true');
+            trailerPanel.inert = true;
+            trailerFrame.src = 'about:blank';
+            trailerFrame.hidden = true;
+            trailerVideo.pause();
+            trailerVideo.removeAttribute('src');
+            trailerVideo.load();
+            trailerVideo.hidden = true;
+
+            if (restoreFocus) playButton.focus();
+        }
+
+        function playTrailer(movie) {
+            const source = getTrailerSource(movie.trailer);
+            if (!source) {
+                trailerNotice.textContent = movie.trailer
+                    ? 'Use um link do YouTube/Vimeo ou caminho para arquivo MP4, WebM, OGG ou MOV.'
+                    : `O trailer de ${movie.title} ainda não tem link cadastrado.`;
+                trailerNotice.hidden = false;
+                return;
+            }
+
+            trailerNotice.hidden = true;
+            if (source.kind === 'embed') {
+                trailerVideo.pause();
+                trailerVideo.removeAttribute('src');
+                trailerVideo.load();
+                trailerVideo.hidden = true;
+                trailerFrame.src = source.url;
+                trailerFrame.hidden = false;
+            } else {
+                trailerFrame.src = 'about:blank';
+                trailerFrame.hidden = true;
+                trailerVideo.src = source.url;
+                trailerVideo.hidden = false;
+                trailerVideo.load();
+                trailerVideo.play().catch(() => {});
+            }
+
+            trailerPanel.inert = false;
+            bannerContent.inert = true;
+            bannerSearch.inert = true;
+            trailerPanel.setAttribute('aria-hidden', 'false');
+            mainBanner.classList.add('is-trailer-playing');
+            document.getElementById('closeTrailer').focus();
+        }
+
+        const customMovies = getSavedCustomMovies();
+        customMovies.forEach(entry => {
+            if (movies[entry.id]) return;
+            if (typeof entry.movie.trailer !== 'string') entry.movie.trailer = '';
+            movies[entry.id] = entry.movie;
+            movieRow.append(createMovieCard(entry.id, entry.movie));
+        });
+
+        movieRow.querySelectorAll('.movie-card').forEach(card => {
+            const movie = movies[card.dataset.movie];
+            const poster = card.querySelector('img');
+            if (movie?.poster && poster) poster.src = movie.poster;
+        });
 
         function showMovieInfo(movie) {
             document.getElementById('dialogTitle').textContent = movie.title;
@@ -144,35 +406,145 @@
         }
 
         function changeMovie(movieId, cardElement) {
+            closeTrailer();
             const movie = movies[movieId];
             activeMovie = movie;
 
-            document.getElementById('mainBanner').style.backgroundImage =
-                `linear-gradient(to top, #cb78c5, transparent), url('${movie.image}')`;
+            const nextBannerIndex = (currentBannerIndex + 1) % bannerBackgrounds.length;
+            const currentBackground = bannerBackgrounds[currentBannerIndex];
+            const nextBackground = bannerBackgrounds[nextBannerIndex];
+
+            nextBackground.style.backgroundImage = movie.image ? `url('${movie.image}')` : 'none';
+            nextBackground.classList.add('active');
+            currentBackground.classList.remove('active');
+            currentBannerIndex = nextBannerIndex;
+            trailerNotice.hidden = true;
+
             document.getElementById('movieTitle').textContent = movie.title;
             document.getElementById('movieDescription').textContent = movie.synopsis;
 
             document.querySelectorAll('.movie-card').forEach(card => card.classList.remove('active'));
             cardElement.classList.add('active');
-            showMovieInfo(movie);
         }
 
-        document.querySelectorAll('.movie-card').forEach(card => {
-            const selectMovie = () => changeMovie(card.dataset.movie, card);
-            card.addEventListener('click', selectMovie);
-            card.addEventListener('keydown', event => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                    event.preventDefault();
-                    selectMovie();
-                }
-            });
+        toggleSearch.addEventListener('click', () => {
+            if (movieSearch.hidden) {
+                movieSearch.hidden = false;
+                bannerSearch.classList.add('is-open');
+                toggleSearch.setAttribute('aria-expanded', 'true');
+                movieSearch.focus();
+            } else {
+                closeSearch();
+            }
+        });
+
+        movieSearch.addEventListener('input', filterMovies);
+        movieSearch.addEventListener('keydown', event => {
+            if (event.key === 'Escape') {
+                closeSearch();
+                toggleSearch.focus();
+            }
+        });
+
+        movieRow.addEventListener('click', event => {
+            const card = event.target.closest('.movie-card');
+            if (card) changeMovie(card.dataset.movie, card);
+        });
+
+        movieRow.addEventListener('keydown', event => {
+            if (event.key !== 'Enter' && event.key !== ' ') return;
+            const card = event.target.closest('.movie-card');
+            if (!card) return;
+            event.preventDefault();
+            changeMovie(card.dataset.movie, card);
         });
 
         document.getElementById('showMovieInfo').addEventListener('click', () => showMovieInfo(activeMovie));
         document.getElementById('closeMovieInfo').addEventListener('click', () => movieDialog.close());
+        playButton.addEventListener('click', () => playTrailer(activeMovie));
+        document.getElementById('closeTrailer').addEventListener('click', () => closeTrailer(true));
+        trailerVideo.addEventListener('error', () => {
+            if (!mainBanner.classList.contains('is-trailer-playing')) return;
+            closeTrailer();
+            trailerNotice.textContent = 'Não foi possível reproduzir o vídeo. Confira o arquivo, caminho e formato.';
+            trailerNotice.hidden = false;
+        });
+        document.getElementById('openAddMovie').addEventListener('click', () => addMovieDialog.showModal());
+        document.getElementById('closeAddMovie').addEventListener('click', () => addMovieDialog.close());
+
+        const bannerField = addMovieForm.elements.namedItem('banner');
+        const posterField = addMovieForm.elements.namedItem('poster');
+        const trailerField = addMovieForm.elements.namedItem('trailer');
+        [bannerField, posterField, trailerField].forEach(field => {
+            field.addEventListener('input', () => field.setCustomValidity(''));
+        });
+
+        addMovieForm.addEventListener('submit', event => {
+            event.preventDefault();
+            const formData = new FormData(addMovieForm);
+            const bannerUrl = normalizeHttpUrl(formData.get('banner').trim());
+            const posterUrl = normalizeHttpUrl(formData.get('poster').trim());
+            const trailerPath = formData.get('trailer').trim();
+            const trailerSource = trailerPath ? getTrailerSource(trailerPath) : null;
+
+            if (!bannerUrl) {
+                bannerField.setCustomValidity('Informe uma URL de banner iniciada com http:// ou https://.');
+                bannerField.reportValidity();
+                return;
+            }
+            if (!posterUrl) {
+                posterField.setCustomValidity('Informe uma URL de pôster iniciada com http:// ou https://.');
+                posterField.reportValidity();
+                return;
+            }
+            if (trailerPath && !trailerSource) {
+                trailerField.setCustomValidity('Use um link do YouTube/Vimeo ou caminho para arquivo MP4, WebM, OGG ou MOV.');
+                trailerField.reportValidity();
+                return;
+            }
+
+            const movie = {
+                title: formData.get('title').trim(),
+                year: '',
+                duration: '',
+                genres: formData.get('genres').trim(),
+                director: formData.get('director').trim(),
+                cast: formData.get('cast').trim(),
+                synopsis: formData.get('synopsis').trim(),
+                image: bannerUrl,
+                poster: posterUrl,
+                trailer: trailerPath
+            };
+            let movieId;
+            do {
+                customMovieCounter += 1;
+                movieId = `custom-${Date.now()}-${customMovieCounter}`;
+            } while (movies[movieId]);
+
+            movies[movieId] = movie;
+            customMovies.push({ id: movieId, movie });
+            try {
+                localStorage.setItem(customMoviesStorageKey, JSON.stringify(customMovies));
+            } catch {
+            }
+
+            const card = createMovieCard(movieId, movie);
+            movieRow.append(card);
+            movieSearch.value = '';
+            filterMovies();
+            changeMovie(movieId, card);
+            addMovieForm.reset();
+            addMovieDialog.close();
+        });
+
         movieDialog.addEventListener('click', event => {
             if (event.target === movieDialog) {
                 movieDialog.close();
+            }
+        });
+        addMovieDialog.addEventListener('click', event => {
+            if (event.target === addMovieDialog) {
+                addMovieDialog.close();
             }
         });
     </script>

@@ -12,17 +12,186 @@ body {
 }
 
 .main-banner {
+    position: relative;
+    isolation: isolate;
     height: 70vh;
-    background-size: cover;
-    background-position: center center;
+    background-color: #cb78c5;
     display: flex;
     align-items: center;
     padding: 0 4%;
-    transition: background-image 0.5s ease-in-out;
+}
+
+.banner-search {
+    position: absolute;
+    top: 24px;
+    right: 4%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-toggle {
+    display: grid;
+    flex: 0 0 42px;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    color: #fff;
+    background: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.search-toggle svg {
+    width: 21px;
+    height: 21px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-width: 2;
+    filter: drop-shadow(0 0 5px rgba(255, 118, 250, 0.8));
+}
+
+.search-toggle:focus-visible,
+.add-movie-button:focus-visible {
+    outline: 3px solid #ffd7fb;
+    outline-offset: 3px;
+}
+
+.banner-search .movie-search {
+    width: 0;
+    min-width: 0;
+    height: 42px;
+    padding: 0;
+    color: #241a27;
+    background: #fff;
+    border: 0 solid rgba(255, 255, 255, 0.55);
+    border-radius: 4px;
+    opacity: 0;
+    transition: width 0.22s ease, opacity 0.18s ease, padding 0.22s ease, border-width 0.22s ease;
+}
+
+.banner-search.is-open .movie-search {
+    width: min(280px, calc(100vw - 112px));
+    padding: 0 12px;
+    border-width: 1px;
+    opacity: 1;
+}
+
+.banner-background {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-size: cover;
+    background-position: center center;
+    opacity: 0;
+    transition: opacity 0.55s ease-in-out;
+}
+
+.banner-content,
+.banner-search {
+    transition: opacity 0.35s ease-in-out;
+}
+
+.trailer-panel {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    overflow: hidden;
+    background: #080808;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.45s ease-in-out, visibility 0.45s;
+}
+
+.trailer-embed,
+.trailer-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border: 0;
+}
+
+.trailer-video {
+    object-fit: cover;
+}
+
+.trailer-panel::after {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    content: "";
+    background: linear-gradient(to top, #cb78c5 0%, rgba(203, 120, 197, 0.28) 55%, transparent);
+    pointer-events: none;
+}
+
+.trailer-close {
+    position: absolute;
+    top: 24px;
+    right: 4%;
+    z-index: 4;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    color: #fff;
+    background: rgba(36, 26, 39, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    box-shadow: 0 0 16px rgba(255, 118, 250, 0.45);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.trailer-close:focus-visible {
+    outline: 3px solid #ffd7fb;
+    outline-offset: 3px;
+}
+
+.main-banner.is-trailer-playing .banner-background {
+    opacity: 0;
+}
+
+.main-banner.is-trailer-playing .banner-content,
+.main-banner.is-trailer-playing .banner-search {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.main-banner.is-trailer-playing .trailer-panel {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.banner-background::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background: linear-gradient(to top, #cb78c5 0%, rgba(203, 120, 197, 0.28) 55%, transparent);
+}
+
+.banner-background.active {
+    opacity: 1;
 }
 
 .banner-content {
+    position: relative;
+    z-index: 1;
     max-width: 600px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .banner-background,
+    .banner-content,
+    .banner-search,
+    .trailer-panel {
+        transition: none;
+    }
 }
 
 .banner-content h1 {
@@ -37,6 +206,14 @@ body {
     margin-bottom: 20px;
     color: #ffffff;
 }
+
+.banner-content .trailer-notice {
+    margin: 12px 0 0;
+    font-size: 0.95rem;
+    line-height: 1.35;
+    text-shadow: 0 1px 4px rgba(36, 26, 39, 0.75);
+}
+
 .banner-buttons button {
     padding: 10px 25px;
     font-size: 1.1rem;
@@ -45,12 +222,13 @@ body {
     border-radius: 4px;
     cursor: pointer;
     margin-right: 10px;
-    transition: opacity 0.2s;
+    box-shadow: 0 4px 14px rgba(255, 118, 250, 0.35);
+    transition: opacity 0.2s, box-shadow 0.2s;
 }
 
 .btn-play {
     background-color: #fff;
-    color: #ff76fa;
+    color: #e69be3;
 }
 
 .btn-info {
@@ -68,9 +246,14 @@ body {
     z-index: 10;
 }
 
+.movie-section-heading {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
 .movie-section h2 {
     font-size: 1.5rem;
-    margin-bottom: 15px;
 }
 
 .movie-row {
@@ -78,6 +261,130 @@ body {
     grid-template-columns: repeat(6, 1fr);
     gap: 10px;
 }
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.add-movie-button,
+.add-movie-submit {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    font: inherit;
+}
+
+.add-movie-submit {
+    min-height: 42px;
+    padding: 0 16px;
+    color: #fff;
+    background: #713e70;
+    box-shadow: 0 4px 14px rgba(255, 118, 250, 0.35);
+    cursor: pointer;
+}
+
+.add-movie-button {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 20;
+    display: grid;
+    place-items: center;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    color: #fff;
+    background: #ec95e9;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 50%;
+    box-shadow: 0 0 26px rgba(255, 118, 250, 0.42), 0 5px 18px rgba(36, 26, 39, 0.2);
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.add-movie-button:hover,
+.add-movie-submit:hover {
+    background: #ffb7fd;
+}
+
+.add-movie-button:hover {
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 0 24px rgba(255, 118, 250, 0.75), 0 7px 20px rgba(36, 26, 39, 0.3);
+}
+
+.empty-results {
+    padding: 16px 0;
+}
+
+.add-movie-dialog {
+    width: min(680px, calc(100% - 32px));
+}
+
+.add-movie-form {
+    display: grid;
+    gap: 16px;
+}
+
+.add-movie-form h2 {
+    margin-bottom: 0;
+}
+
+.form-fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.form-fields label {
+    display: grid;
+    gap: 6px;
+    color: #f0e5f0;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.form-field-wide {
+    grid-column: 1 / -1;
+}
+
+.form-fields input,
+.form-fields textarea {
+    width: 100%;
+    padding: 10px 12px;
+    color: #241a27;
+    background: #fff;
+    border: 1px solid #b9a9ba;
+    border-radius: 4px;
+    font: inherit;
+    font-weight: 400;
+}
+
+.form-fields textarea {
+    resize: vertical;
+}
+
+.form-fields input:focus-visible,
+.form-fields textarea:focus-visible,
+.banner-search .movie-search:focus-visible,
+.add-movie-button:focus-visible,
+.add-movie-submit:focus-visible {
+    outline: 3px solid #ffd7fb;
+    outline-offset: 2px;
+}
+
+.add-movie-submit {
+    justify-self: end;
+}
+
 
 
 @keyframes crescerCard {
@@ -89,6 +396,7 @@ body {
     }
 }
 .movie-card {
+    aspect-ratio: 2 / 3;
     cursor: pointer;
     border-radius: 4px;
     overflow: hidden;
@@ -103,7 +411,7 @@ body {
 }
 .movie-card img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
     object-fit: cover;
 }
@@ -112,9 +420,7 @@ body {
     transform: scale(1.08);
 }
 
-.movie-card.active {
-    border-color: #ff00e6; 
-}
+
 
 .movie-dialog {
     width: min(600px, calc(100% - 32px));
@@ -149,6 +455,7 @@ body {
     border: 0;
     border-radius: 50%;
     font-size: 1.5rem;
+    box-shadow: 0 0 12px rgba(255, 118, 250, 0.35);
     cursor: pointer;
 }
 
@@ -192,6 +499,18 @@ body {
 }
 
 @media (max-width: 768px) {
+    .add-movie-button {
+        right: 16px;
+        bottom: 16px;
+        width: 54px;
+        height: 54px;
+    }
+    .form-fields {
+        grid-template-columns: 1fr;
+    }
+    .add-movie-submit {
+        justify-self: stretch;
+    }
     .movie-row {
         grid-template-columns: repeat(3, 1fr);
     }
